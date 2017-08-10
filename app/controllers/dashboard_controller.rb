@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 
 	def index
-
+		begin_time = Time.now
 		#1. OVERALL PLATFORM TOTALS
 		@user_total = User.all.count
 		@order_total = Order.order_total
@@ -35,7 +35,8 @@ class DashboardController < ApplicationController
 		@avg_order_total = Order.avg_order_total
 		@largest_order = Order.largest_order
 		#binding.pry
-		
+		end_time = Time.now
+		puts "Time take is #{end_time - begin_time}."
 	end
 
 end
