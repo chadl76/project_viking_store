@@ -75,7 +75,7 @@
       		<tr>
       		  <td>Revenue</td>
                     
-      		  <td><%=@revenue %></td>
+      		  <td><%="$#{@revenue} "%></td>
       		</tr>
 
       	</table>
@@ -92,10 +92,13 @@
       		  <th>Item</th>
       		  <th>Data</th>
       		</tr>
+          <% @user_top_states.each do |state| %>
       		<tr>
-      		  <td>User Total</td>
-      		  <td><%=@user_total%></td>
+
+      		  <td><%=state[1] %></td>
+      		  <td><%=state[0]%></td>
       		</tr>
+          <% end %>
       	</table>
 
 
@@ -106,21 +109,35 @@
       		  <th>Item</th>
       		  <th>Data</th>
       		</tr>
+          <% @user_top_cities.each do |city| %>
       		<tr>
-      		  <td>User Total</td>
-      		  <td><%=@user_total%></td>
+      		  <td><%=city[1]%></td>
+      		  <td><%=city[0]%></td>
       		</tr>
+          <% end %>
       	</table>
       	<h2>Top User With...</h2>
       	<table class="table table-striped table-bordered">
       		<tr>
       		  <th>Item</th>
+            <th>User</th>
       		  <th>Data</th>
       		</tr>
       		<tr>
-      		  <td>User Total</td>
-      		  <td><%=@user_total%></td>
+      		  <td>Most Orders Placed</td>
+      		  <td><%=@most_order_by_user[0][1]%></td>
+            <td><%=@most_order_by_user[0][0]%></td>
       		</tr>
+          <tr>
+            <td>Highest Single Order Value</td>
+            <td><%=@user_with_highest_order[0][0]%></td>
+            <td><%="$#{@user_with_highest_order[0][1]}" %></td>
+          </tr>
+          <tr>
+            <td>Highest Avg Order Value</td>
+            <td><%=@user_with_avg_highest_order[0][0]%></td>
+            <td><%="$#{@user_with_avg_highest_order[0][1].to_f}"%></td>
+          </tr>
       	</table>
     </div>
     </div>
@@ -137,9 +154,19 @@
       		  <th>Data</th>
       		</tr>
       		<tr>
-      		  <td>User Total</td>
-      		  <td><%=@user_total%></td>
+      		  <td>Number of Orders</td>
+      		  <td><%=@orders_placed_7%></td>
       		</tr>
+            <td>Total Revenue</td>
+            <td><%="$#{@revenue_7}"%></td>
+          <tr>
+            <td>Average Order Value</td>
+            <td><%="$#{@order_avg_7}"%></td>
+          </tr>
+          <tr>
+            <td>Largest Order Value</td>
+            <td><%="$#{@largest_order_7}"%></td>
+          </tr>
       	</table>
 
 
@@ -154,7 +181,21 @@
       		  <td>User Total</td>
       		  <td><%=@user_total%></td>
       		</tr>
+          <tr>
+            <td>Total Revenue</td>
+            <td><%="$#{@revenue_30}"%></td>
+          </tr>
+          <tr>
+            <td>Average Order Value</td>
+            <td><%="$#{@order_avg_30}" %></td>
+          </tr>
+          <tr>
+            <td>Largest Order Value</td>
+            <td><%="$#{@largest_order_30}" %></td>
+          </tr>
+
       	</table>
+
       	<h2>Total</h2>
       	<table class="table table-striped table-bordered">
       		<tr>
@@ -162,9 +203,21 @@
       		  <th>Data</th>
       		</tr>
       		<tr>
-      		  <td>User Total</td>
-      		  <td><%=@user_total%></td>
+      		  <td>Number of Orders</td>
+      		  <td><%="$#{@order_total}"%></td>
       		</tr>
+          <tr>
+            <td>Total Revenue</td>
+            <td><%="$#{@revenue}" %></td>
+          </tr>
+          <tr>
+            <td>Average Order Value</td>
+            <td><%="$#{@avg_order_total}"%></td>
+          </tr>
+          <tr>
+            <td>Largest Order</td>
+            <td><%="$#{@largest_order}" %></td>
+          </tr>
       	</table>
     </div>
 

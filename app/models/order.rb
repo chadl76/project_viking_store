@@ -12,6 +12,35 @@ class Order < ApplicationRecord
 		find_by_sql("SELECT checkout_date FROM orders WHERE (checkout_date > current_date - #{num_day}) ORDER BY checkout_date DESC").count
 	end
 
+	def self.avg_order_total
+		joins("JOIN order_contents ON order_contents.order_id = orders.id").joins("JOIN products ON order_contents.product_id = products.id").where("orders.checkout_date IS NOT NULL").average("products.price").to_i
+	end
+
+	def self.avg_order_value(num_day)
+		joins("JOIN order_contents ON order_contents.order_id = orders.id").joins("JOIN products ON order_contents.product_id = products.id").where("orders.checkout_date IS NOT NULL AND orders.checkout_date > current_date - ?", num_day).average("products.price").to_i
+	end
+
+	def self.largest_order_value(num_day)
+		sql = "SELECT products.price * order_contents.quantity AS total FROM products JOIN order_contents ON products.id = order_contents.product_id JOIN orders ON orders.id = order_contents.order_id WHERE orders.checkout_date > (current_date - #{num_day}) ORDER BY total DESC LIMIT 1"
+	
+		result = ActiveRecord::Base.connection.exec_query(sql)
+		total = result.rows[0]
+		total[0].to_i
+	end
+
+	def self.largest_order
+		sql = "SELECT products.price * order_contents.quantity AS total FROM products JOIN order_contents ON products.id = order_contents.product_id JOIN orders ON orders.id = order_contents.order_id ORDER BY total DESC LIMIT 1"
+		
+		result = ActiveRecord::Base.connection.exec_query(sql)
+		total = result.rows[0]
+		total[0].to_i
+	end
+	
+
+	
+
+
+
 
 
 	
