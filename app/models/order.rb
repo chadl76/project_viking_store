@@ -25,7 +25,7 @@ class Order < ApplicationRecord
 	
 		result = ActiveRecord::Base.connection.exec_query(sql)
 		total = result.rows[0]
-		total[0].to_i
+		total[0].to_f
 	end
 
 	def self.largest_order
@@ -33,7 +33,7 @@ class Order < ApplicationRecord
 		
 		result = ActiveRecord::Base.connection.exec_query(sql)
 		total = result.rows[0]
-		total[0].to_i
+		total[0].to_f
 	end
 	
 
