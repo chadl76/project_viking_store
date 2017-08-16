@@ -6,7 +6,7 @@ class OrderContent < ApplicationRecord
 		
 		result =  ActiveRecord::Base.connection.exec_query(sql)
 		
-		result.rows[0][0].to_f
+		result.rows[0][0]
 	end
 
 	def self.get_revenue_by_day(num_day)
@@ -17,7 +17,7 @@ class OrderContent < ApplicationRecord
 		result =  ActiveRecord::Base.connection.exec_query(sql)
 
 		sum = 0		
-		total = result.rows.each { |x| sum += x[0].to_f}
+		total = result.rows.each { |x| sum += x[0].to_i.round(2)}
 		sum
 	end
 

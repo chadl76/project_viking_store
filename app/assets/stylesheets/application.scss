@@ -1,9 +1,21 @@
-
-
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
+.main-nav{
+	float: left;
+	width: 215px;
+	margin-left: 45px;
+	border: solid;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 10%;
+}
 
-.borders{
-	border-style: solid;
-	border-color: red;
+.main-nav h4{
+	text-align: center;
+}
+
+
+.header{
+	text-align: center;
 }

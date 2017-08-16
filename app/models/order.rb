@@ -13,11 +13,11 @@ class Order < ApplicationRecord
 	end
 
 	def self.avg_order_total
-		joins("JOIN order_contents ON order_contents.order_id = orders.id").joins("JOIN products ON order_contents.product_id = products.id").where("orders.checkout_date IS NOT NULL").average("products.price").to_i
+		joins("JOIN order_contents ON order_contents.order_id = orders.id").joins("JOIN products ON order_contents.product_id = products.id").where("orders.checkout_date IS NOT NULL").average("products.price")
 	end
 
 	def self.avg_order_value(num_day)
-		joins("JOIN order_contents ON order_contents.order_id = orders.id").joins("JOIN products ON order_contents.product_id = products.id").where("orders.checkout_date IS NOT NULL AND orders.checkout_date > current_date - ?", num_day).average("products.price").to_i
+		joins("JOIN order_contents ON order_contents.order_id = orders.id").joins("JOIN products ON order_contents.product_id = products.id").where("orders.checkout_date IS NOT NULL AND orders.checkout_date > current_date - ?", num_day).average("products.price")
 	end
 
 	def self.largest_order_value(num_day)
@@ -25,7 +25,7 @@ class Order < ApplicationRecord
 	
 		result = ActiveRecord::Base.connection.exec_query(sql)
 		total = result.rows[0]
-		total[0].to_f
+		total[0]
 	end
 
 	def self.largest_order
@@ -33,7 +33,7 @@ class Order < ApplicationRecord
 		
 		result = ActiveRecord::Base.connection.exec_query(sql)
 		total = result.rows[0]
-		total[0].to_f
+		total[0]
 	end
 	
 
