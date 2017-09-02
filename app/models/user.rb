@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+	has_many :addresses
+	has_many :orders
+
+	has_many :products, through: :order_contents
+
+	belongs_to :shipping_address, :foreign_key => :shipping_id, class_name: :"Address"
 
 	def self.new_users(num_day)
 		where("created_at > ?", Time.now - num_day.days).count

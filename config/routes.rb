@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get 'users/index'
+  end
+
+  namespace :admin do
     get 'categories/index'
   end
 
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
 	namespace :admin do 
 		resources :categories, only: [:index]
 		resources :products, only: [:index]
+		resources :users, only: [:index]
 	end
 
 end

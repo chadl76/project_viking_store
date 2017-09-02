@@ -1,5 +1,6 @@
 class OrderContent < ApplicationRecord
-
+	belongs_to :order
+	belongs_to :product
 	#private
 	def self.get_revenue
 		sql = "SELECT SUM(price * quantity) AS total FROM order_contents JOIN products ON products.id = order_contents.product_id"
