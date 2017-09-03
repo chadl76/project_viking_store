@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
 	has_many :products, through: :order_contents
 
+	belongs_to :billing_address, :foreign_key => :billing_id, class_name: :"Address"
 	belongs_to :shipping_address, :foreign_key => :shipping_id, class_name: :"Address"
 
 	def self.new_users(num_day)

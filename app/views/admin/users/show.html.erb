@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>User Name</h1>
+  <div class="row demo_info">
+  	<div class="col-xs-8 col-xs-offset-2 ">
+  		<h2 class=" page-header text-center title_for_user">Demographic Information</h2>
+  		<div class="user_demo_info">
+  		 <h5>First Name: <%=@user.first_name %></h5>
+  		 <h5>Last Name: <%=@user.last_name%></h5>
+  		 <h5>Email: <%=link_to "#{@user.email}", '#'%></h5>
+  		 <br>
+  		 <h5>Default Billing Address: <%=@user_shipping_address %> </h5>
+  		 <h5>Default Shipping Address: <%=@user_shipping_address%></h5>
+
+  		 <p><%=link_to "Edit #{@user.first_name} #{@user.last_name}'s' information", '#' %></p>
+  		 <p><%=link_to "Delete #{@user.first_name} #{@user.last_name}", '#' %></p>
+  		 <p><%=link_to "View Saved Addresses", '#' %></p>
+  		 <p><%=link_to "View Unplaced Order", '#' %></p>
+  		</div>
+  	</div>
+  </div>
+</div>
+
+<div class="container">
+  
+  <div class="row demo_info">
+  	<div class="col-xs-8 col-xs-offset-2 ">
+  		<h2 class="page-header text-center title_for_user">Credit Card Info</h2>
+  		<div class="user_demo_info">
+  		 <h5>First Name: <%=@user.first_name %></h5>
+  		 <h5>Last Name: <%=@user.last_name%></h5>
+  		 <h5>Number: </h5>
+  		 <h5>Expiration: </h5>
+  		 <h5>CV2: </h5>
+  		
+  		 <p><%=link_to "Remove Card", '#' %></p>
+  		</div>
+  	</div>
+  </div>
+</div>
