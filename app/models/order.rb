@@ -37,8 +37,14 @@ class Order < ApplicationRecord
 		total = result.rows[0]
 		total[0]
 	end
-	
 
+	def value
+		products.sum("quantity * price")
+	end
+
+	def join_order_contents_on_order
+		"JOIN order_contents ON order_contents.order_id = orders.id"
+	end
 	
 
 

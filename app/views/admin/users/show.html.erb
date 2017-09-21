@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>User Name</h1>
+  <h1 class="text-center"><%="#{@user.id}: #{@user.first_name} #{@user.last_name}"%></h1>
   <div class="row demo_info">
   	<div class="col-xs-8 col-xs-offset-2 ">
   		<h2 class=" page-header text-center title_for_user">Demographic Information</h2>
@@ -28,12 +28,56 @@
   		<div class="user_demo_info">
   		 <h5>First Name: <%=@user.first_name %></h5>
   		 <h5>Last Name: <%=@user.last_name%></h5>
-  		 <h5>Number: </h5>
-  		 <h5>Expiration: </h5>
-  		 <h5>CV2: </h5>
+  		 <h5>Number: <%=@user.credit_cards.first.card_number%></h5>
+  		 <h5>Expiration: <%="#{@user.credit_cards.first.exp_month}/#{@user.credit_cards.first.exp_year}"%> </h5>
+  		 <h5>CV2: <%=@user.credit_cards.first.ccv%> </h5>
   		
   		 <p><%=link_to "Remove Card", '#' %></p>
   		</div>
+  	</div>
+  </div>
+</div>
+
+<div class="container">
+  
+  <div class="row demo_info">
+  	<div class="col-xs-8 col-xs-offset-2 ">
+  		<h3 class="text-center">Admin actions for <%="#{@user.first_name} #{@user.last_name}"%></h3>
+  		<a href="#" class="btn btn-primary btn-md btn-block" role="button">Create Order</a>
+  		<a href="#" class="btn btn-primary btn-md btn-block" role="button">Create Address</a>
+  	</div>
+  </div>
+</div>
+
+<div class="container">
+  
+  <div class="row demo_info">
+  	<div class="col-xs-8 col-xs-offset-2 ">
+  		<h2 class="text-center page-header">Order Histroy</h2>
+  		  <table class="table table-striped table-bordered">
+  		  	<tr>
+  		  	  <th>ID</th>
+  		  	  <th>Order Date</th>
+  		  	  <th>Order Value</th>
+  		  	  <th>Status</th>
+  		  	  <th>Show</th>
+  		  	  <th>Edit</th>
+  		  	  <th>Delete</th>
+  		  	</tr>
+  		  	<tr>
+  		  		<%@user.orders.each do |usr_order| %>
+  		  		<td><%=usr_order.id %></td>
+  		  		<td><%=usr_order.checkout_date %></td>
+  		  		<td><%=usr_order.value%></td>
+  		  		<td></td>
+  		  		<td><%=link_to 'show', '#'%></td>
+  		  		<td><%=link_to 'edit', '#'%></td>
+  		  		<td><%=link_to 'delete', '#'%></td>
+
+  		  	</tr>
+  		  	    <% end %>
+  		  </table>
+  	
   	</div>
   </div>
 </div>

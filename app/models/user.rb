@@ -3,7 +3,7 @@ class User < ApplicationRecord
 	has_many :orders
 	has_many :credit_cards
 
-	has_many :products, through: :order_contents
+	has_many :order_products, through:  :orders, :source => :products
 
 	belongs_to :billing_address, :foreign_key => :billing_id, class_name: :"Address"
 	belongs_to :shipping_address, :foreign_key => :shipping_id, class_name: :"Address"
@@ -52,6 +52,8 @@ class User < ApplicationRecord
 
 		results.rows
 	end
+
+
 
 	
 end
