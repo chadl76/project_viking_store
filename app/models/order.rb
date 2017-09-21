@@ -14,12 +14,12 @@ class Order < ApplicationRecord
 	end
 
 	def self.avg_order_total
-		joins(join_order_contents_on_order).joins("JOIN products ON order_contents.product_id = products.id").where("orders.checkout_date IS NOT NULL").average("products.price").round(2)
+		joins("JOIN order_contents ON order_contents.order_id = orders.id").joins("JOIN products ON order_contents.product_id = products.id").where("orders.checkout_date IS NOT NULL").average("products.price").round(2)
 		#binding.pry
 	end
 
 	def self.avg_order_value(num_day)
-		joins(join_order_contents_on_order).joins("JOIN products ON order_contents.product_id = products.id").where("orders.checkout_date IS NOT NULL AND orders.checkout_date > current_date - ?", num_day).average("products.price").to_f.round(2)
+		joins("JOIN order_contents ON order_contents.order_id = orders.id").joins("JOIN products ON order_contents.product_id = products.id").where("orders.checkout_date IS NOT NULL AND orders.checkout_date > current_date - ?", num_day).average("products.price").to_f.round(2)
 	end
 
 	def self.largest_order_value(num_day)
