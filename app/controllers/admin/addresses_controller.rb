@@ -4,4 +4,15 @@ class Admin::AddressesController < ApplicationController
 		@addresses = Address.all
 	end
 
+	def show
+		@address = Address.find(params[:id])
+		@user = @address.user
+	end
+
+
+	private
+	def address_params
+		params.require(:addresses)
+	end
+
 end
