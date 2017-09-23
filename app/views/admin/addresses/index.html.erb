@@ -28,7 +28,7 @@
 						<td><%=addr.zip_code%></td>
 						<td><%=addr.user.orders.count%></td>
 						<td><%=addr.created_at%></td>
-						<td><%=link_to "Show", admin_user_address_path(addr.user_id, addr.id)%></td>
+						<td><%=link_to "Show", admin_user_address_path(addr.user.id, addr.id)%></td>
 						<td><%=link_to "Edit" %></td>
 						<td><%=link_to "Delete"%></td>
 					</tr>

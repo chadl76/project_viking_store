@@ -2,11 +2,17 @@ class Admin::AddressesController < ApplicationController
 
 	def index
 		@addresses = Address.all
+		
 	end
 
 	def show
-		@address = Address.find(params[:id])
-		@user = @address.user
+		@addr = Address.find(params[:id])
+		@user = User.find(params[:user_id])
+		@address = @user.addresses
+
+	 
+		
+		
 	end
 
 
