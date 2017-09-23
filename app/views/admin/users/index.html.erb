@@ -23,9 +23,9 @@
 					<td><%=u.id%></td>
 					<td><%="#{u.first_name} #{u.last_name}" %></td>
 					<td><%=u.addresses.first.city.name%></td>
-					<td><%=u.addresses.first.state.name %></td>
+					<td><%=u.addresses.first.state.name%></td>
 					<td><%=u.orders.count%></td>
-					<td><%=u.orders.last%></td>
+					<td></td>
 					<td><%=link_to 'Show', admin_user_path(u)%></td>
 					<td><%=link_to 'Edit', edit_admin_user_path(u)%></td>
 					<td><%=link_to 'Delete'%></td>
