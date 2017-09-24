@@ -3,6 +3,9 @@
 		<div class="col-xs-12">
 			<h1 class="text-center">Addresses</h1>
 			<p class="text-center">Create new addresses from within <%=link_to "User"%> profiles</p>
+			
+			<a href="#" class="btn btn-primary btn-large btn-block" role="button">Create New Address</a>
+
 			<br>
 			<table class="table table-striped table-bordered">
 					<tr>
@@ -21,14 +24,14 @@
 					<%@addresses.each do |addr| %>
 					<tr>
 						<td><%=addr.id%></td>
-						<td><%="#{addr.user.first_name} #{addr.user.last_name}" %></td>
+						<td><%=link_to "#{addr.user.first_name} #{addr.user.last_name}", admin_user_addresses_path(addr.user_id)%></td>
 						<td><%=addr.street_address %></td>
 						<td><%=addr.city.name%></td>
 						<td><%=addr.state.name%></td>
 						<td><%=addr.zip_code%></td>
 						<td><%=addr.user.orders.count%></td>
 						<td><%=addr.created_at%></td>
-						<td><%=link_to "Show", admin_user_address_path(addr.user.id, addr.id)%></td>
+						<td><%=link_to "Show", admin_user_address_path(addr.user_id, addr.id)%></td>
 						<td><%=link_to "Edit" %></td>
 						<td><%=link_to "Delete"%></td>
 					</tr>

@@ -1,5 +1,6 @@
 class Admin::OrdersController < ApplicationController
 	before_action :get_order, only: [:show]
+	
 
 	def index
 		if params[:user_id]
@@ -8,7 +9,7 @@ class Admin::OrdersController < ApplicationController
 				@orders = Order.where(user_id: @user.id)
 			else
 				flash[:error] = "Invalid User Id"
-				redirct_to admin_user_orders_path
+				redirect_to admin_user_orders_path
 			end
 		else
 			@orders = Order.all
@@ -25,4 +26,6 @@ class Admin::OrdersController < ApplicationController
 	def get_order
 		@order = Order.find(params[:id])
 	end
+
+
 end
