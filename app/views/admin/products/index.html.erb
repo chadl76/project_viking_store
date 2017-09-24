@@ -18,7 +18,7 @@
       	    <td><%=prod.name%></td>
       	    <td><%="$#{prod.price}"%></td>
       		<td><%=prod.description%></td>
-      		<td><%=link_to 'Show'%></td>
+      		<td><%=link_to 'Show', admin_product_path(prod.id)%></td>
       		<td><%=link_to 'Edit'%></td>
       		<td><%=link_to 'Delete'%></td>
       	</tr>

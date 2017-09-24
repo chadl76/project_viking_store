@@ -1,0 +1,25 @@
+<%=@product.inspect %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class=text-center>Product: <%=@product.id%></h1>
+			<div class="row">
+			  <div class="col-xs-10 col-xs-offset-1">
+			   <h3>Product Information</h3>
+			   <p>Product ID: <%=@product.id%></p>
+			   <p>Name: <%=@product.name%></p>
+			   <p>Price: $<%=@product.price%></p>
+
+			   <br>
+			   <h3>Product Statistics</h3>
+			   <p>Times Ordered: <%=@product.orders.count%></p>
+
+			   <br>
+
+			   <p><%=link_to "Edit Product"%></p>
+			   <p><%=link_to "Delete Product"%></p>
+		     </div>
+		  </div>
+		</div>
+	</div>
+</div>

@@ -19,11 +19,13 @@ class OrderContent < ApplicationRecord
 		sum
 	end
 
+	#def self.product_total_ordered
+	#	find_by_sql("SELECT order_contents.product_id, order_contents.quantity FROM order_contents JOIN products on products.id = order_contents.product_id JOIN orders ON orders.id = order_contents.order_id GROUP BY order_conents.product_id ORDER BY order_contents.quantity")
+	#end
+
 	def value
 		product.price * quantity
 	end
-
-
 
 
 end
