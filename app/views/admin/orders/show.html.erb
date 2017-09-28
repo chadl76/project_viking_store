@@ -10,7 +10,7 @@
 			      <br>
 			      
 			      <p>Customer ID: <%="#{@order.user_id}"%></p>
-			      <p>Customer: <%=link_to "#{@order.user.first_name} #{@order.user.last_name} (click to view user)"%></p>
+			      <p>Customer: <%=link_to "#{@order.user.first_name} #{@order.user.last_name} (click to view user)", admin_user_path(@order.user_id)%></p>
 			      <p>Date Placed: <%=@order.created_at%></p>
 			      <p># Products: <%=@order.products.count%></p>
 			      <p>Order Value: $<%=@order.value %></p>
