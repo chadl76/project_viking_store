@@ -9,8 +9,8 @@ class User < ApplicationRecord
 	belongs_to :shipping_address, :foreign_key => :shipping_id, class_name: :"Address"
 
 	
-	validates :first_name, :last_name, length: { maximum: 250 }, presence: true
-	validates :email, presence: true, format: { with: /@/ } 
+	validates :first_name, :last_name, length: { maximum: 64 }, presence: true
+	validates :email, length: {maximum: 64}, presence: true, format: { with: /@/ } 
 
 	accepts_nested_attributes_for :addresses,
 								  :allow_destroy => true,

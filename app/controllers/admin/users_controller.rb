@@ -24,8 +24,10 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:success]= "User created successfully."
       redirect_to admin_user_path(@user)
     else
+      flash.now[:error] = "Failed to create user."
       render :new
     end
   end
@@ -48,5 +50,5 @@ end
 private 
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email)
+    params.require(:user).permit(:first_name, :last_name, :email, :billing_id, :shipping_id)
   end
