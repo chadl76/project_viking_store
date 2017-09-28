@@ -8,6 +8,14 @@ class User < ApplicationRecord
 	belongs_to :billing_address, :foreign_key => :billing_id, class_name: :"Address"
 	belongs_to :shipping_address, :foreign_key => :shipping_id, class_name: :"Address"
 
+	
+	validates :first_name, :last_name, length: { maximum: 64 }, presence: true
+	validates :email, length: {maximum: 64}, presence: true, format: { with: /@/ } 
+
+	accepts_nested_attributes_for :addresses,
+								  :allow_destroy => true,
+								  :reject_if => :all_blank
+
 	def self.new_users(num_day)
 		where("created_at > ?", Time.now - num_day.days).count
 	end
