@@ -2,23 +2,23 @@
 <h4>Navigation Options</h4>
 <ul class="nav nav-pills nav-stacked nav-fixed-left">
   <li class="nav-item">
-    <a class="nav-link active text-center" href="#">Users</a>
+    <%=link_to "Users", admin_users_path, :class => "nav-link active text-center"%>
   </li>
   <li class="nav-item">
-    <a class="nav-link text-center" href="#">Addresses</a>
+    <%=link_to "Addresses", admin_addresses_path, :class=> "nav-link active text-center" %>
   </li>
   <li class="nav-item">
-    <a class="nav-link text-center" href="#">Orders</a>
+    <%=link_to "Orders", admin_orders_path, :class=> "nav-link active text-center" %>
   </li>
   <li class="nav-item">
-    <a class="nav-link text-center" href="#">Products</a>
+    <%=link_to "Products", admin_products_path, :class => "nav-link active text-center" %>
   </li>
   <li class="nav-item">
-    <a class="nav-link text-center" href="#">Categories</a>
+   <%=link_to "Categories", admin_categories_path, :class => "nav-link active text-center" %> 
   </li>
   <hr>
   <li class="nav-item">
-    <a class="nav-link text-center" href="#">Analtyics Dashboard</a>
+   <%=link_to "Analytics Dashborad", dashboard_path, :class => "nav-link active text-center" %>
   </li>
 
 </ul>
