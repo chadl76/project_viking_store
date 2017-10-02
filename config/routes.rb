@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 	namespace :admin do
 
 		resources :categories, only: [:index, :show]
-		resources :products, only: [:index, :show]
+		resources :products
     resources :orders, only: [:index]
     resources :addresses
 		resources :users do 

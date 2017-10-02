@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 offset-sm-1">
-      <a href="#" class="btn btn-primary btn-lg btn-block" role="button">Add a new Product</a>
+     <%=link_to "Add a new Product", new_admin_product_path, :class => "btn btn-primary btn-large btn-block"%>
 	    <table class="table table-striped table-bordered">
+        
       	  <tr>
       	    <th>Product ID</th>
       	    <th>Product Name</th>
@@ -19,7 +20,7 @@
       	    <td><%="$#{prod.price}"%></td>
       		<td><%=prod.description%></td>
       		<td><%=link_to 'Show', admin_product_path(prod.id)%></td>
-      		<td><%=link_to 'Edit'%></td>
+      		<td><%=link_to 'Edit', edit_admin_product_path(prod.id) %></td>
       		<td><%=link_to 'Delete'%></td>
       	</tr>
          <% end %>

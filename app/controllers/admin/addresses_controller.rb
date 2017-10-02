@@ -17,21 +17,45 @@ class Admin::AddressesController < ApplicationController
 		end
 	end
 
-	def show
-		#@addr = Address.find(params[:id])
-		#@user = User.find(params[:user_id])
-		#@address = @user.addresses
-		@address = Address.find(params[:id])
-	 
-		
-		
+	def new
+		@address = Address.new(user_id: params[:user_id])
 	end
+
+	def edit
+		@address = Address.find(params[:id])
+	end
+
+
+	def show
+		@address = Address.find(params[:id])
+	 end
+
+	 def create
+	 	@address = Address.new(whitelisted_address_params)
+	 	if @address.save
+	 		flash[:success] = "New address created"
+	 		redirect_to admin_user_addresses_path(@address.user_id)
+	 	else
+	 		flash.now[:error] = "Failed to create new addresss."
+	 		render 'new'
+	 	end
+	 end
+
+	 def update
+	 	if @address.update_attributes(whitelisted_address_params)
+	 		flash[:success] = "Address updated!"
+	 		redirect_to admin_user_addresses_path
+	 	else
+	 		flash.now[:error] = "Failed to update address"
+	 		render 'new'
+	 	end
+	 end
 
 
 	private
 
-	def address_params
-		params.require(:addresses)
+	def whitelisted_address_params
+		params.require(:address).permit(:street_address, :state_id, :city_id, :user_id, :zip_code)
 	end
 
 	def get_address
